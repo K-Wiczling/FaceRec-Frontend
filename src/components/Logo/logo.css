@@ -1,0 +1,7 @@
+.tilt {
+    background: linear-gradient(89deg,#c541b8 0%, #4d43df 100%);
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    opacity: 70%;
+}
