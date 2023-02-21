@@ -12,24 +12,36 @@ class App extends Component {
     super();
     this.state = {
       input: "",
+      route: "signin",
     };
   }
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
   };
   onButtonSubbmit = () => {};
+  onRouteChange = (newRoute) => {
+    // this.setState({route: newRoute})
+  }
   render() {
     return (
       <div className="App">
-        <Signin/>
         <ParticlesBg type="cobweb" color="#000000" bg={true} />
-        <Navigation />
-        <Logo />
-        <Rank />
-        <LinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubbmit={this.onButtonSubbmit}
-        />
+        <Navigation onRoutChange={this.onRouteChange}/>
+        
+        {this.state.route === "signin" ? 
+          <div>
+            <Signin onRoutChange={this.onRouteChange } />
+            </div>
+         : 
+          <div>
+            <Logo />
+            <Rank />
+            <LinkForm
+              onInputChange={this.onInputChange}
+              onButtonSubbmit={this.onButtonSubbmit}
+            />
+          </div>
+        }
       </div>
     );
   }
