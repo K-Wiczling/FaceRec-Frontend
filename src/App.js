@@ -6,6 +6,7 @@ import Rank from "./components/Rank/Rank";
 import ParticlesBg from "particles-bg";
 import { Component } from "react";
 import Signin from "./components/Signin/Signin";
+import Register from "./components/Register/Register";
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,7 @@ class App extends Component {
     this.state = {
       input: "",
       route: "signin",
+      isSignedIn: false,
     };
   }
   onInputChange = (event) => {
@@ -20,19 +22,20 @@ class App extends Component {
   };
   onButtonSubbmit = () => {};
   onRouteChange = (newRoute) => {
-    // this.setState({route: newRoute})
-  }
+    if (newRoute === "home") {
+      this.setState({ isSignedIn: true });
+    } else {
+      this.setState({ isSignedIn: false });
+    }
+    this.setState({ route: newRoute });
+  };
   render() {
     return (
       <div className="App">
         <ParticlesBg type="cobweb" color="#000000" bg={true} />
-        <Navigation onRoutChange={this.onRouteChange}/>
-        
-        {this.state.route === "signin" ? 
-          <div>
-            <Signin onRoutChange={this.onRouteChange } />
-            </div>
-         : 
+        <Navigation onRouteChange={this.onRouteChange} isSignin={this.state.isSignedIn} />
+
+        {this.state.route === "home" ? (
           <div>
             <Logo />
             <Rank />
@@ -41,7 +44,13 @@ class App extends Component {
               onButtonSubbmit={this.onButtonSubbmit}
             />
           </div>
-        }
+        ) : this.state.route === "signin" ? (
+          <div>
+            <Signin onRouteChange={this.onRouteChange} />
+          </div>
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
+        )}
       </div>
     );
   }

@@ -8,7 +8,7 @@ const LinkForm = ({onInputChange, onButtonSubbmit}) => {
             </p>
             <div className="center pa4 br3 shadow-5" >
                 <input className="f4 w-70 center " type='text' onChange={onInputChange}/>
-                <button className="f4 grow link pv2 ph3 dib white bg-light-purple w-30 center "  onClick={onButtonSubbmit('home')}>Detect</button>
+                <button className="f4 grow link pv2 ph3 dib white bg-light-purple w-30 center "  onClick={onButtonSubbmit}>Detect</button>
             </div>
         </div>
     )
