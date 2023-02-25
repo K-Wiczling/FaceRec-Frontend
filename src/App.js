@@ -37,7 +37,7 @@ class App extends Component {
 
         {this.state.route === "home" ? (
           <div>
-            
+
             <Logo />
             <Rank />
             <LinkForm
